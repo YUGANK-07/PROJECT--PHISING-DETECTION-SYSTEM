@@ -1,0 +1,70 @@
+{
+  "url": "https://microsoft-login-secure.xyz",
+  "phishing_probability": 0.9885,
+  "risk_level": "High",
+  "explanation": [
+    {
+      "feature": "tld_risk_score",
+      "value": 0.95,
+      "shap_value": 6.375,
+      "impact": "increases_risk",
+      "human_label": "High-risk top-level domain (e.g. .xyz, .tk)"
+    },
+    {
+      "feature": "suspicious_kw_density",
+      "value": 0.4,
+      "shap_value": 0.9334,
+      "impact": "increases_risk",
+      "human_label": "High density of phishing-related keywords"
+    },
+    {
+      "feature": "is_https",
+      "value": 1.0,
+      "shap_value": -0.8527,
+      "impact": "decreases_risk",
+      "human_label": "is https"
+    },
+    {
+      "feature": "hostname_len",
+      "value": 26.0,
+      "shap_value": 0.7689,
+      "impact": "increases_risk",
+      "human_label": "hostname len"
+    },
+    {
+      "feature": "query_len",
+      "value": 0.0,
+      "shap_value": 0.5932,
+      "impact": "increases_risk",
+      "human_label": "query len"
+    },
+    {
+      "feature": "path_entropy",
+      "value": 0.0,
+      "shap_value": -0.5241,
+      "impact": "decreases_risk",
+      "human_label": "path entropy"
+    },
+    {
+      "feature": "url_length",
+      "value": 34.0,
+      "shap_value": -0.355,
+      "impact": "decreases_risk",
+      "human_label": "URL is unusually long"
+    },
+    {
+      "feature": "path_len",
+      "value": 0.0,
+      "shap_value": 0.3208,
+      "impact": "increases_risk",
+      "human_label": "path len"
+    }
+  ],
+  "text_summary": "🚨 Risk Level: High (98.9% phishing probability)\nURL: https://microsoft-login-secure.xyz\n\nSuspicious signals detected:\n  • High-risk top-level domain (e.g. .xyz, .tk)\n  • High density of phishing-related keywords\n  • hostname len\n  • query len\n  • path len\nLegitimacy signals:\n  • is https\n  • path entropy\n  • URL is unusually long",
+  "model_scores": {
+    "random_forest": 0.701,
+    "xgboost": 0.9991
+  },
+  "processing_time_ms": 174.94,
+  "cached": false
+}

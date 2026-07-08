@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHISHING DETECTION SYSTEM</title>
+  <meta name="description" content="Guardians of Internet — Real-time AI-powered phishing URL detection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Background ── -->
+  <div class="background-grid" aria-hidden="true"></div>
+
+  <!-- ── Navbar ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="var(--accent)" stroke-width="2" fill="rgba(0,255,204,0.1)"/>
+            <path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="brand-name">GUARDIANS OF INTERNET</span>
+        <span class="brand-tag">AI CORE</span>
+      </div>
+      <div class="nav-right">
+        <div class="api-badge" id="apiBadge">
+          <span class="api-dot" id="apiDot"></span>
+          <span id="apiLabel">CONNECTING</span>
+        </div>
+        <a href="http://localhost:8000/docs" target="_blank" class="nav-docs">API DOCS ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════ SCANNER VIEW ══════════════ -->
+  <main class="view" id="viewScanner">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-eyebrow"><span class="eyebrow-dot"></span> SYSTEM READY</div>
+      <h1 class="hero-title">
+        PHISHING DETECTION<br/>
+        <span class="hero-highlight">SYSTEM</span>
+      </h1>
+      <p class="hero-sub">AI-DRIVEN THREAT ANALYSIS. ENTER URL FOR REAL-TIME VERDICT.</p>
+    </section>
+
+    <!-- Scanner card -->
+    <div class="scanner-wrap">
+      <div class="scanner-card panel" id="scannerCard">
+        <div class="panel-header">
+          <h2 class="panel-title">SCAN TARGET</h2>
+        </div>
+
+        <div class="scanner-inner">
+          <div class="input-shell" id="inputShell">
+            <div class="input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <input
+              id="urlInput"
+              class="url-input"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="TARGET URL (E.G. HTTPS://EXAMPLE.COM)"
+            />
+            <button class="clear-x" id="clearX" aria-label="Clear">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+
+          <div class="input-shell ref-shell" id="refShell">
+            <div class="input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </div>
+            <input
+              id="refInput"
+              class="url-input"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="REFERENCE URL (E.G. HTTPS://PAYPAL.COM)"
+            />
+            <button class="clear-x" id="refClearX" aria-label="Clear">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+
+          <button class="scan-btn" id="scanBtn">
+            <span class="scan-btn-text">INITIATE SCAN</span>
+            <div class="scan-btn-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </button>
+        </div>
+
+        <!-- Quick examples -->
+        <div class="chips-row">
+          <span class="chips-label">QUICK TEST:</span>
+          <button class="chip" data-url="http://paypal-secure-verify.account-confirm.xyz/login.php">PAYPAL PHISH</button>
+          <button class="chip" data-url="https://rnicrosoft.com">TYPOSQUAT</button>
+          <button class="chip" data-url="https://paypal.com/signin">SAFE (PAYPAL)</button>
+          <button class="chip" data-url="https://github.com/features">SAFE (GITHUB)</button>
+          <button class="chip" data-url="http://192.168.1.5/amazon/billing.php">IP PHISH</button>
+        </div>
+      </div>
+
+
+    </div>
+
+  </main>
+
+  <!-- ══════════════ SCANNING STATE ══════════════ -->
+  <div class="scan-overlay" id="scanOverlay" style="display:none">
+    <div class="advanced-scanner">
+      <div class="scanner-bracket left"></div>
+      <div class="scanner-bracket right"></div>
+      <div class="scanner-crosshair">
+        <div class="crosshair-h"></div>
+        <div class="crosshair-v"></div>
+        <div class="crosshair-center"></div>
+        <div class="radar-sweep"></div>
+      </div>
+    </div>
+    <div class="scanner-hud">
+      <p class="scan-label glitch" data-text="ANALYZING TARGET...">ANALYZING TARGET...</p>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <p class="scan-sub blink">EXTRACTING 106 FEATURES & COMPUTING RISK</p>
+    </div>
+  </div>
+
+  <!-- ══════════════ RESULT VIEW ══════════════ -->
+  <div class="view result-view" id="viewResult" style="display:none">
+
+    <div class="result-wrap">
+
+      <!-- Verdict hero -->
+      <div class="verdict-hero panel" id="verdictHero">
+        <div class="verdict-ring-wrap">
+          <svg class="verdict-ring" viewBox="0 0 160 160">
+            <circle class="vr-track" cx="80" cy="80" r="66"/>
+            <circle class="vr-fill" id="vrFill" cx="80" cy="80" r="66"
+              stroke-dasharray="415" stroke-dashoffset="415"
+              transform="rotate(-90 80 80)"/>
+          </svg>
+          <div class="verdict-ring-center">
+            <div class="verdict-emoji" id="verdictEmoji"></div>
+            <div class="verdict-pct" id="verdictPct">0%</div>
+            <div class="verdict-pct-label">PHISHING</div>
+          </div>
+        </div>
+
+        <div class="verdict-info">
+          <div class="verdict-risk-badge" id="verdictBadge"></div>
+          <div class="verdict-url-text" id="verdictUrlText"></div>
+          <div class="verdict-meta">
+            <span class="vmeta-item" id="vmTime"></span>
+            <span class="vmeta-sep">·</span>
+            <span class="vmeta-item" id="vmCache"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signals -->
+      <div class="signals-section panel" id="signalsSection" style="display:none">
+        <div class="panel-header">
+          <h2 class="panel-title signals-header">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            THREAT ANALYSIS REPORT
+          </h2>
+        </div>
+        <div class="signals-list" id="signalsList"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="result-actions">
+        <button class="back-btn" id="previewBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          SECURE PREVIEW
+        </button>
+        <button class="back-btn" id="backBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          SCAN ANOTHER TARGET
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-stack" id="toastStack"></div>
+
+  <!-- Secure Preview Modal -->
+  <div class="preview-modal" id="previewModal" style="display:none">
+    <div class="preview-content panel">
+      <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 class="panel-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right:8px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          SECURE VISUAL PREVIEW
+        </h2>
+        <button class="clear-x" id="closePreviewBtn" aria-label="Close Preview" style="position:static;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="preview-body" id="previewBody">
+        <div class="preview-loader" id="previewLoader">
+          <div class="radar-sweep" style="position:relative; width:100px; height:100px; border-radius:50%; margin:0 auto 20px;"></div>
+          <p class="blink">RENDERING SANDBOXED PREVIEW...</p>
+        </div>
+        <div class="preview-image-wrap" id="previewImageWrap" style="display:none">
+          <img id="previewImage" src="" alt="Secure Website Preview" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

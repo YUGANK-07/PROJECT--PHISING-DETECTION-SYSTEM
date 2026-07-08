@@ -1,0 +1,440 @@
+PHISHING DETETCTION SYSTEM USING ML
+A Report submitted
+In partial fulfilment for the Degree of
+B. Tech
+In
+COMPUTER SCIENCE & ENGINEERING
+by
+AYUSH DIXIT (UU2201010115)
+NIKHIL PRANJAL JUYAL (UU2201010222)
+VIBHANSHU PANCHWAN (UU2201010346)
+VISHAL NEGI (UU2201010348)
+YUGANK PANT (UU220101358)
+Pursued in
+Department of Uttaranchal Institute of Technology
+To
+
+Uttaranchal Institute of Technology
+
+Uttaranchal University
+Dehradun
+
+CERTIFICATE
+
+This is to certify that the project report entitled “GUARDIAN: An Intelligent Phishing Detection System Using Machine Learning” submitted by Ayush Dixit, Nikhil Pranjal Juyal, Vibhanshu Panchwan, Vishal Negi, and Yugank Pant, students of B. Tech (Computer Science & Engineering), Uttaranchal University, in partial fulfillment for the award of the degree of Bachelor of Technology, is a bona fide record of the project work carried out by them under my supervision.
+It is further certified that this work has not been submitted, either in part or in full, to any other Institution or University for the award of any degree or diploma.
+                                                                                                                                            
+Asst. Prof. Ms. Shreya Suman                                                                        
+Uttaranchal Institute of Technology
+Dehradun                  
+May 2026
+
+
+
+
+
+Counter Signature of Head of Department (HOD) with Sea
+DECLARATION
+
+I declare that this project report titled “GUARDIAN: An Intelligent Phishing Detection System Using Machine Learning” submitted in partial fulfillment of the degree of B. Tech in (Computer Science & Engineering) is a record of original work carried out by me under the supervision of Asst. Prof. Ms. Shreya Suman, and has not formed the basis for the award of any other degree or diploma, in this or any other Institution or University. In keeping with the ethical practice in reporting scientific information, due acknowledgements have been made wherever the findings of others have been cited.
+
+                                                            Ayush Dixit
+ (Enrollment No: UU2201010115)
+                                      
+                                              Nikhil Pranjal Juyal
+  (Enrollment No: UU2201010222)
+
+                                               Vibhanshu Panchwan
+(Enrollment No: UU2201010346)
+
+                                Vishal Negi
+(Enrollment No: UU2201010347)
+
+                                 Yugank Pant
+(Enrollment No: UU2201010358)
+
+Date: ___________
+ACKNOWLEDGEMENT
+
+We would like to express our sincere gratitude to the Director of Uttaranchal Institute of Technology, Uttaranchal University, Prof. Dr. Sumit Chaudhary, and the Head of the Department of Computer Science & Engineering, Dr. Madhu Kirola, for their constant support, encouragement, and for providing us with the necessary infrastructure and academic environment to successfully complete our project titled “GUARDIAN: An Intelligent Phishing Detection System Using Machine Learning.”
+We are also deeply thankful to our respected supervisor, Ms. Shreya Suman, for her invaluable guidance, continuous support, and insightful suggestions throughout the development of this project. Her expertise and mentorship played a vital role in shaping the direction and success of our work.
+Furthermore, we extend our sincere thanks to all the faculty members of the Department of Computer Science & Engineering for their support, cooperation, and for sharing their knowledge during the course of this project.
+Finally, we would like to express our heartfelt gratitude to our family members and friends for their constant encouragement, motivation, and support throughout the completion of this project.
+Ayush Dixit
+Nikhil Pranjal Juyal
+Vibhanshu Panchwan                                                                                                                                                                   
+Vishal Negi
+Yugank Pant
+
+ABSTRACT
+
+Phishing attacks have emerged as one of the most significant cybersecurity threats, targeting users through deceptive websites and malicious URLs to steal sensitive information. Traditional detection techniques often rely on blacklists or rule-based systems, which fail to identify newly generated or sophisticated phishing attempts. To address these limitations, this project presents “GUARDIAN: An Intelligent Phishing Detection System Using Machine Learning,” designed to provide accurate, real-time detection of phishing threats.
+The proposed system utilizes a comprehensive set of features extracted from URLs, website structure, and visual characteristics to improve detection performance. A dataset containing both legitimate and phishing URLs is used to train and evaluate multiple machine learning models. Feature engineering techniques are applied to derive meaningful attributes, enabling the model to distinguish between benign and malicious patterns effectively. The system also incorporates advanced techniques such as visual similarity analysis and explainability mechanisms to enhance transparency and user trust.
+The developed model demonstrates high performance in terms of accuracy and F1-score, significantly reducing false positives and false negatives. The system is capable of detecting previously unseen phishing attacks, making it more robust than traditional approaches. Additionally, the integration of user-friendly interfaces allows users to verify website authenticity before accessing potentially harmful links.
+The results indicate that GUARDIAN is a reliable and efficient solution for phishing detection, combining accuracy, scalability, and interpretability. This project contributes to enhancing cybersecurity awareness and provides a practical tool to safeguard users against evolving phishing threats.
+
+TABLE OF CONTENT
+
+DESCRIPTION
+PAGE NUMBER
+CERTIFICATE
+2
+DECLARATION
+3
+ACKNOWLEDGEMENTS
+4
+ABSTRACT
+5
+LIST OF FIGURES
+8
+LIST OF TABLES
+9
+ABBREVIATIONS
+10
+1.INTRODUCTION
+Background
+Problem Statement
+Motivation
+Objective
+11-12
+2.LITERATURE REVIEW
+Existing Approaches
+Limitations of Current Systems
+13
+3.PROPOSED SYSTEM
+Overview of Proposed Solution
+Key Idea
+Advantages over Existing Systems
+14
+4.METHODOLOGY & SYSTEM ARCHITECTURE
+System Architecture Explanation
+Step-by-Step Working
+Algorithms & ML Models Used
+15-17
+5.IMPLEMENTATION
+Tools & Technologies Used
+Dataset Description
+Feature Engineering
+Model Training & Workflow
+18-19
+6.RESULTS AND DISCUSSION
+Performance Metrics
+Result Analysis
+Output Explanation
+20-22
+7.CONCLUSION AND FUTURE SCOPE
+Conclusion
+Future Scope
+23
+REFERENCES
+24
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LIST OF FIGURES
+
+FIGURE
+TITLE
+PAGE NUMBER
+4.1
+Guardian High-Level System Architecture
+15
+4.2
+Feature Extraction Pipeline
+16
+4.3
+Ensemble Stacking Methodology
+17
+6.1
+Receiver Operating Characteristic (ROC) Curve
+20
+6.2
+Random Forest Confusion Matrix
+21
+6.3
+XGBoost Confusion Matrix
+21
+6.4
+Random Forest Feature Importance (SHAP)
+22
+
+
+LIST OF TABLES
+
+TABLE
+TITLE
+PAGE NUMBER
+5.1
+Guardian Tech Stack
+18
+6.1
+Model Performance Comparison Metrics
+20
+
+ABBREVIATIONS 
+
+API: Application Programming Interface
+
+DNS: Domain Name System
+
+FNR: False Negative Rate
+
+JWT: JSON Web Token
+
+ML: Machine Learning
+
+NLP: Natural Language Processing
+
+ROC-AUC: Receiver Operating Characteristic - Area Under Curve
+
+SHAP: SHapley Additive exPlanations
+
+TLD: Top-Level Domain
+
+URL: Uniform Resource Locator
+
+WHOIS: Query and response protocol widely used for querying databases that store    the registered users or assignees of an Internet resource
+CHAPTER 1
+INTRODUCTION
+
+Background
+The rapid expansion of internet connectivity and digital services has led to a proportional increase in cybercrime, with phishing remaining the primary vector for data breaches, identity theft, and financial fraud. Phishing attacks involve malicious actors spoofing legitimate entities to deceive users into divulging sensitive credentials. As attackers continuously refine their techniques—utilizing dynamic URLs, obfuscated code, and targeted spear-phishing campaigns—static, reactive defense mechanisms are becoming increasingly inadequate.
+
+Problem Statement
+Traditional phishing detection systems predominantly rely on reactive blacklists and simple heuristic rules. However, these methods are notoriously slow to update, allowing newly created (zero-day) phishing sites to compromise users before being cataloged. Furthermore, advanced phishing websites now employ techniques to bypass standard lexical analysis, resulting in a high rate of false positives where legitimate brand domains are incorrectly flagged. There is a critical need for an intelligent, real-time system capable of proactively analyzing URL syntax, domain reputation, and content semantics simultaneously.
+
+Motivation
+The financial and psychological impact of successful phishing attacks motivates the development of a superior detection paradigm. Our motivation stems from the necessity to construct a framework that is not only highly accurate but also highly transparent. Security analysts and end-users alike must understand *why* a URL is classified as malicious. By leveraging explainable AI (XAI) alongside advanced ensemble models, we aim to bridge the gap between black-box machine learning predictions and actionable, trustworthy cybersecurity intelligence.
+
+
+
+
+
+Objectives
+The primary objectives of the GUARDIAN project are:
+1. To develop a robust, real-time phishing detection system using ensemble machine learning techniques.
+2. To extract and process an extensive dataset of 102 distinct features across lexical, domain, webpage, and NLP categories.
+3. To implement a visual verification pipeline and a strict domain whitelist to effectively eliminate false positives on benign domains.
+4. To integrate SHAP for prediction explainability, rendering human-readable justifications for the system's classifications.
+5. To deploy the system utilizing a scalable FastAPI backend with Redis caching and a modern, responsive web user interface.
+
+
+CHAPTER 2
+LITERATURE REVIEW / EXISTING SYSTEM
+
+2.1 Existing Approaches
+Historically, phishing detection has been categorized into three distinct                   methodologies:
+List-Based Approaches: Utilizing blacklists (e.g., PhishTank, Google Safe Browsing) to block known malicious URLs. While highly accurate for known threats, they offer zero protection against newly registered phishing domains.
+Heuristic-Based Approaches: Relying on predefined rules (e.g., IP address in URL, abnormal subdomains) to identify suspicious patterns. These systems struggle to adapt to evolving attacker strategies.
+Single-Model Machine Learning: Employing standalone algorithms such as Support Vector Machines (SVM) or Naive Bayes based solely on URL lexical features. These often lack the dimensional depth required to achieve high accuracy without suffering from severe false positive rates.
+
+2.2 Limitations of Current Systems
+Existing solutions suffer from several critical shortcomings:
+Zero-Day Vulnerability: Inability to detect ephemeral phishing campaigns that launch and disappear within hours.
+High False Positive Rates: Overly aggressive heuristic rules frequently penalize legitimate websites, diminishing user trust.
+Lack of Explainability: Deep learning and complex ML models operate as "black boxes," providing a probability score but no context as to which features triggered the alert.
+Poor Scalability: Feature extraction pipelines in many academic models are too computationally expensive for real-time, low-latency production environments.
+
+
+
+CHAPTER 3
+PROPOSED SYSTEM
+
+3.1 Overview of Proposed Solution
+GUARDIAN is proposed as a comprehensive, end-to-end phishing detection ecosystem designed to overcome the limitations of traditional models. It operates by analyzing a given URL through a sophisticated, multi-layered extraction pipeline that dynamically captures 102 features ranging from simple string entropy to deep DNS/WHOIS records and NLP-based page content analysis.
+
+3.2 Key Idea
+The core innovation of GUARDIAN lies in its Ensemble Classification Logic paired with Visual Verification. Instead of relying on a single model, GUARDIAN utilizes a stacking ensemble that combines the strengths of Random Forest (excellent at handling non-linear data and outliers) and XGBoost (superior gradient boosting for complex feature interactions). To safeguard against false positives, the system enforces an intelligent domain whitelist and brand verification mechanism, ensuring recognized safe entities (e.g., microsoft.com, google.com) are preserved.
+
+3.3 Advantages over Existing Systems
+Unprecedented Accuracy: Achieves an F1-score of 1.0000 on tested datasets by fusing lexical, domain, structural, and semantic features.
+Real-Time Processing: Optimized FastAPI backend and asynchronous Redis caching ensure ultra-low latency suitable for production environments.
+Explainable AI (XAI): Integration of SHAP provides human-readable explanations detailing the exact risk factors contributing to the final prediction.
+Robustness Against Evasion: Visual verification and extensive NLP analysis prevent attackers from bypassing the system via simple URL obfuscation.
+CHAPTER 4
+METHODOLOGY & SYSTEM ARCHITECTURE
+
+4.1 System Architecture Explanation
+The architecture of GUARDIAN is structured into distinct, highly decoupled modules to ensure scalability and maintainability.
+Data Ingestion Layer: Asynchronously fetches URL requests via a RESTful API.
+Feature Extraction Pipeline: The core engine that dissects the URL. It is split into Lexical, Domain (WHOIS/DNS), Webpage structure, and NLP extraction modules.
+Machine Learning Layer: Houses the pre-trained Random Forest, XGBoost, and the Meta-Classifier (Ensemble model) stored as `.joblib` artifacts.
+Explainability Engine: Utilizes SHAP TreeExplainer to map feature contributions to the final risk score.
+Caching & Delivery: Redis caches recent predictions to instantly serve repeated requests, while FastAPI delivers the JSON response back to the client UI.
+
+Figure 4.1: GUARDIAN High-Level System Architecture
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.2 Step-by-Step Working
+Request Reception: The user submits a URL via the Web UI or API.
+Whitelist Check: The system verifies the domain against a strict whitelist (e.g., paypal.com, microsoft.com). If matched, it bypasses complex processing and returns a "Safe" verdict.
+Feature Extraction: If the URL is unknown, the 102-dimensional feature vector is generated in real-time.
+Ensemble Prediction: The feature vector is passed to the Random Forest and XGBoost models. Their outputs are fed into a meta-classifier to generate a final phishing probability.
+SHAP Analysis: The TreeExplainer evaluates the decision path to generate a human-readable explanation of the risk factors.
+Response Generation: The final JSON object containing the probability, risk level, and explanations is returned to the user.
+
+Figure 4.2: Feature Extraction Pipeline
+
+
+
+
+4.3 Algorithms & ML Models Used
+Random Forest Classifier: A robust ensemble of decision trees utilized for its resilience to overfitting and capacity to handle high-dimensional spaces.
+XGBoost (Extreme Gradient Boosting): Employed to capture intricate, non-linear relationships between URL syntax and domain metadata. Tuned using Optuna for optimal hyperparameter selection.
+Stacking Meta-Classifier: A Logistic Regression model that learns how to best combine the predictions of the Random Forest and XGBoost base estimators, yielding the final ensemble prediction.
+DistilBERT (Optional NLP): Used for advanced semantic analysis of webpage content to detect urgency phrases and brand impersonation.
+
+Figure 4.3: Ensemble Stacking Methodology
+
+
+CHAPTER 5
+IMPLEMENTATION
+
+5.1 Tools & Technologies Used
+COMPONENT
+TECHNOLOGY
+Machine Learning
+Scikit-learn, XGBoost, PyTorch, SHAP
+Backend API
+FastAPI, Uvicorn, Pydantic v2
+Caching Layer
+Redis (Async)
+Security/Auth
+JWT (python-jose), API Keys
+Frontend UI
+Vanilla HTML, CSS, JavaScript
+Enviroment
+Python 3.10+, PowerShell, Loguru
+
+5.2 Dataset Description
+The system was trained on a massive, highly curated dataset containing 250,000 URLs.
+Phishing Samples: Sourced from PhishTank and OpenPhish to capture active, real-world attacks.
+Benign Samples: Sourced from the Tranco top 1 million list to ensure the model recognizes legitimate, high-traffic domains.
+Test Set: A strict, held-out validation set of 37,500 URLs was utilized to prevent data leakage and guarantee unbiased performance metrics.
+
+5.3 Feature Engineering
+A total of 102 features were engineered to provide the models with maximum context:
+URL Lexical (45 features): Entropy calculation, total length, TLD risk scoring, presence of homographs, and detection of brand names in subdomains.
+Domain (19 features): WHOIS registration age, DNS records (A/MX/NS validation), and SSL certificate validity/issuer reputation.
+Webpage (31 features): Analysis of HTML/JS structures, counting hidden iframes, detecting obfuscated JavaScript, and monitoring meta-refresh tags.
+NLP (7 features): TF-IDF and semantic checking for phishing phrase density and urgency keywords (e.g., "account suspended", "verify immediately").
+ 5.4 Model Training & Workflow
+The training pipeline was fully automated via a CLI (`trainer.py`). The dataset underwent rigorous preprocessing: deduplication, balancing, and 80/20 stratified splitting. Both Random Forest and XGBoost models were trained iteratively, with XGBoost undergoing 50 trials of Optuna hyperparameter optimization to fine-tune learning rate, max depth, and regularization parameters. The meta-classifier was then trained on the Out-Of-Fold (OOF) predictions of the base estimators. 
+
+CHAPTER 6
+RESULTS AND DISCUSSION
+
+Performance Metrics
+The models were evaluated against the 37,500 held-out test URLs. The ensemble model demonstrated state-of-the-art performance, virtually eliminating false negatives.
+Model
+Precision
+Recall
+F1-Score
+ROC-AUC
+Random Forest
+1.0000
+1.0000
+1.0000
+1.0000
+XGBoost
+0.9999
+0.9994
+0.9997
+1.0000
+Ensemble Model
+1.0000
+1.0000
+1.0000
+1.0000
+
+Figure 6.1: Receiver Operating Characteristic (ROC) Curve 
+Figure 6.2: Random Forest Confusion Matrix
+
+
+
+Figure 6.3: XGBoost Confusion Matrix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Result Analysis
+The Ensemble model missed only 1 phishing URL out of 22,500 tested, resulting in an extraordinary False Negative Rate (FNR) of 0.004%. The integration of the domain whitelist effectively eliminated the false-positive errors previously observed with prominent domains like `microsoft.com`. The ROC-AUC score of 1.0000 indicates perfect separability achieved by the multi-dimensional feature space.
+
+Output Explanation
+Unlike traditional models, GUARDIAN does not output a mere binary result. The REST API returns a comprehensive JSON object detailing the `phishing_probability`, `risk_level`, and a `text_summary`. Crucially, the `explanation` array maps directly back to the SHAP values. For example, if a domain returns an anomaly, the output specifically states "High-risk top-level domain (.xyz) increases risk," translating complex mathematical derivations into immediately actionable cyber intelligence.
+
+Figure 6.4: Random Forest Feature Importance (SHAP)
+
+
+CHAPTER 7
+CONCLUSION AND FUTURE SCOPE
+
+7.1 Conclusion
+GUARDIAN successfully bridges the gap between academic machine learning precision and production-ready software engineering. By implementing an advanced stacking ensemble model supported by 102 meticulously engineered features, the system achieves near-perfect classification accuracy (F1-score of 1.0). The incorporation of a visual verification pipeline and strict domain whitelisting resolved critical false-positive challenges, ensuring the system can be safely deployed without disrupting legitimate web traffic. Furthermore, the use of SHAP explainability transforms GUARDIAN into a transparent, trustworthy defense mechanism, setting a new standard for modern phishing detection systems.
+
+7.2 Future Scope
+While GUARDIAN currently exhibits exceptional performance, future enhancements could focus on the following areas:
+Deep Learning Vision Integration: Implementing Convolutional Neural Networks (CNNs) to directly analyze screenshot renderings of web pages to detect visual brand spoofing at the pixel level.
+Real-time Stream Processing: Transitioning from asynchronous batch API requests to Apache Kafka event streams for enterprise-scale ISP integration.
+Browser Extension Deployment: Creating a lightweight Chrome/Edge extension that leverages a distilled, edge-optimized version of the ensemble model to protect users natively within their browsers.
+Continuous Learning: Developing an active learning feedback loop where the models automatically retrain on newly verified zero-day phishing indicators flagged by security researchers.
+REFERENCES
+
+1. "PhishTank: An anti-phishing site." OpenDNS. [Online]. Available: https://www.phishtank.com/
+
+2. "OpenPhish: Global Phishing Intelligence." [Online]. Available: https://openphish.com/
+
+3. "Tranco: A Research-Oriented Top Sites Ranking." [Online]. Available: https://tranco-list.eu/
+
+4. Chen, T., & Guestrin, C. (2016). "XGBoost: A Scalable Tree Boosting System." In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining.
+
+5. Lundberg, S. M., & Lee, S.-I. (2017). "A Unified Approach to Interpreting Model Predictions." In Advances in Neural Information Processing Systems (NeurIPS).
+
+6. Pedregosa, F., et al. (2011). "Scikit-learn: Machine Learning in Python." Journal of Machine Learning Research, 12, 2825-2830.
+
+7. FastAPI Framework Documentation. Sebastián Ramírez. [Online]. Available: https://fastapi.tiangolo.com/
+
+8. Akiba, T., Sano, S., Yanase, T., Ohta, T., & Koyama, M. (2019). "Optuna: A Next-generation Hyperparameter Optimization Framework." In Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining.
